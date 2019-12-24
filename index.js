@@ -42,9 +42,9 @@ async function qone() {
 async function two() {
   try {
     const result = await Course.find({
-      isPublished: true,
-      tags: { $in: ["frontend", "backend"] }
+      isPublished: true
     })
+      .and({ tags: { $in: ["frontend", "backend"] } })
       .sort({ price: -1 })
       .select({ name: 1, author: 1 });
     console.log(result);
